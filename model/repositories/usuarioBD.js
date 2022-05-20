@@ -33,3 +33,10 @@ async function insertUsuario(usuario){
     const values = [usuario.nome, seguranca.ocultarsenha(usuario, senha)];
     return await conn.query(sql, values);
 }
+
+async function deleteusuario(id){
+    const conn = await usuarioBD.connect();
+    const sql = 'DELECT FROM usuario WHERE id=?;';
+    return await conn.query(sql, [id]);
+}
+

@@ -48,4 +48,4 @@ async function deleteusuario(id){
 }
 
 module.exports = {selectUsuario, insertUsuario, deleteusuario,
-updateUsuario, getUsuarioId}
+        updateUsuario, getUsuarioId, login};

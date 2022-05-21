@@ -60,4 +60,25 @@ module.exports = function(app){
             next(err);
         }
     });
+
+    app.get('/delete/usuario/:id', async (req, res, next) => {
+        try {
+            var id = req.params.id;
+            await usuarioBanco.deleteUsuario(id);
+            const docs = await usuarioBanco.selectUsuario();
+            res.render('usuario/Lista', { mensagem: 'Usuário excluído com sucesso', docs });
+        } catch (err){
+            next(err);
+        }
+    });
+
+    app.get('/edit/usuario/:id', async (req, res, next) => {
+        try {
+            var id = req.params.id;
+            const usuario = await usuarioBanco.getusuarioId(id);
+            res.render('usuario/EditUsuario', { mensagem: '', usuario});
+        } catch (err){
+            next(err);
+        }
+    });
 }

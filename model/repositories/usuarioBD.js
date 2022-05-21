@@ -34,9 +34,18 @@ async function insertUsuario(usuario){
     return await conn.query(sql, values);
 }
 
+async function updateUsuario(usuario){
+    const conn = await usuarioBD.connect();
+    const sql = 'UPDATE usuario SET nome=?, senha=? WHERE id=?';
+    const values = [usuario.nome, seguranca.ocultarsenha(usuario, senha)];
+    return await conn.query(sql, values);
+}
+
 async function deleteusuario(id){
     const conn = await usuarioBD.connect();
     const sql = 'DELECT FROM usuario WHERE id=?;';
     return await conn.query(sql, [id]);
 }
 
+module.exports = {selectUsuario, insertUsuario, deleteusuario,
+updateUsuario, getUsuarioId}

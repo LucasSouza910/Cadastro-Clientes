@@ -1,5 +1,5 @@
 const usuarioBD = require('./db.js');
-const seguranca = require('./components/seguranca')
+const seguranca = require('../components/seguranca')
 
 async function selectUsuario(){
     const conn = await usuarioBD.connect();
